@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Redirección desde la raíz según autenticación
-Route::get('/', fn () => auth()->check() ? redirect('/dashboard') : redirect('/login'));
+Route::get('/', fn () => auth()->check() ? redirect('/dashboard') : redirect('/register'));
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard
