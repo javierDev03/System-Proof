@@ -21,10 +21,8 @@ class OrderController extends Controller
         ]);
     }
 
-    // Mostrar el formulario para crear una nueva orden
     public function create()
     {
-        // Obtener todos los clientes y productos para mostrarlos en el formulario
         $customers = Customer::all();
         $products = Product::all();
 
@@ -34,10 +32,8 @@ class OrderController extends Controller
         ]);
     }
 
-    // Almacenar una nueva orden
     public function store(Request $request)
     {
-        // Validar los datos recibidos
         $request->validate([
             'number' => 'required|string|max:255',
             'date' => 'required|date',
@@ -48,34 +44,30 @@ class OrderController extends Controller
             'items.*.quantity' => 'required|integer|min:1',
         ]);
 
-        // Crear la orden
         $order = Order::create([
             'number' => $request->number,
             'date' => $request->date,
             'customer_id' => $request->customer_id,
         ]);
 
-        // Crear los items de la orden
         foreach ($request->items as $item) {
-            // Verificar si el producto ya existe, si no, crear uno nuevo
             $product = Product::firstOrCreate([
                 'name' => $item['product_name'],
                 'price' => $item['product_price']
             ]);
 
-            // Crear el item de la orden con el producto recién creado o existente
             OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $product->id,
                 'quantity' => $item['quantity'],
-                'price' => $item['product_price'],  // El precio del producto, que es el que se usará en la orden
+                'price' => $item['product_price'],  
             ]);
         }
 
         return redirect()->route('dashboard')->with('success', 'Orden creada con éxito');
     }
 
-    // Cancelar una orden
+    
     public function cancel($id)
     {
         $order = Order::findOrFail($id);
