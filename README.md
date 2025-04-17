@@ -36,4 +36,20 @@ Este proyecto es un sistema web construido con **Laravel (backend)** y **VueJS (
 ### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/tu-usuario/nombre-repo.git
-cd nombre-repo
+cd nombre-repo 
+```
+### 2. Instalar Dependencias
+# Dependencias PHP (Laravel)
+
+```bash
+composer install
+```
+# Dependencias JavaScript (Vue + Tailwind)
+```bash
+npm install
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+### 3. Configurar .ENV 
+
+
