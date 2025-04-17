@@ -51,5 +51,18 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init
 ```
 ### 3. Configurar .ENV 
-
-
+# Base de Datos
+```bash
+DB_CONNECTION=sqlite
+```
+# Email 
+```bash
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=tu-correo@gmail.com
+MAIL_PASSWORD=tu-contraseña-de-app
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=tu-correo@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
